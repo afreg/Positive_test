@@ -1,0 +1,36 @@
+import java.util.TreeSet;
+import java.util.Arrays;
+
+public class Main {
+  public static void main(String[] args) {
+      int bools = 14;
+      boolean[] conds = new boolean[14];
+    TreeSet<String> results = iter(bools-1, conds);
+    System.out.println(results);
+  }
+  
+  private static TreeSet<String> iter(int depth, boolean... conditions){
+      TreeSet<String> results;
+      conditions[depth] = true;
+      if (depth == 0){
+          results = new TreeSet<String>();
+          conditions[depth] = true;
+          results.add(method(conditions));
+          conditions[depth] = false;
+          results.add(method(conditions));
+      }
+      else {
+          conditions[depth] = true;
+          results = iter(depth-1, conditions);
+          conditions[depth] = false;
+          results.addAll(iter(depth-1, conditions));
+      }
+      return results;
+  }
+  
+  public static String method(boolean... conditions) {
+    int x;
+	
+	return String.valueOf(x);
+}
+}
